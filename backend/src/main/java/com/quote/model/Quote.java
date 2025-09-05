@@ -31,4 +31,5 @@ public class Quote {
     private BigDecimal discount;
 
     private LocalDateTime createdAt;
+    ;
 }

@@ -1,4 +1,4 @@
-package com.quote.dto;
+package com.quote.model.input;
 
 import com.quote.model.UrgencyLevel;
 
