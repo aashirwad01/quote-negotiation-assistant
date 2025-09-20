@@ -1,0 +1,91 @@
+
+openapi: 3.0.3
+info:
+  title: Quote Negotiation Assistant API
+  description: API for submitting and retrieving B2B quote requests
+  version: 1.0.0
+
+paths:
+  /api/quotes:
+    post:
+      summary: Submit a new quote request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormRequestDTO'
+      responses:
+        '200':
+          description: Quote generated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteResponseDTO'
+
+  /api/quotes/{id}:
+    get:
+      summary: Get quote by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Quote retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteResponseDTO'
+
+components:
+  schemas:
+    FormRequestDTO:
+      type: object
+      properties:
+        customerId:
+          type: integer
+          format: int64
+        productId:
+          type: integer
+          format: int64
+        quantity:
+          type: integer
+        urgency:
+          type: string
+          enum: [LOW, MEDIUM, HIGH, CRITICAL]
+        quoteNote:
+          type: string
+
+    QuoteResponseDTO:
+      type: object
+      properties:
+        quoteId:
+          type: integer
+        customerName:
+          type: string
+        regionName:
+          type: string
+        productName:
+          type: string
+        quantity:
+          type: integer
+        listPrice:
+          type: number
+          format: bigdecimal
+        finalPrice:
+          type: number
+          format: bigdecimal
+        discount:
+          type: number
+          format: bigdecimal
+        appliedRules:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: string
+          format: date-time
