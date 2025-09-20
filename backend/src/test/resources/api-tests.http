@@ -1,0 +1,54 @@
+### Quote Negotiation API Tests
+### Base URL: http://localhost:8080
+
+### 1. Health Check - Test if the API is running
+GET http://localhost:8080/api/quotes/health
+Accept: application/json
+
+###
+
+### 2. Generate Quote - Create a new quote
+POST http://localhost:8080/api/quotes
+Content-Type: application/json
+
+{
+  "customerName": "John Doe",
+  "productName": "Premium Widget",
+  "quantity": 100,
+  "notes": "Looking for bulk discount on premium widgets for Q1 order"
+}
+
+###
+
+### 3. Generate Quote - Another example with different data
+POST http://localhost:8080/api/quotes
+Content-Type: application/json
+
+{
+  "customerName": "Jane Smith",
+  "productName": "Standard Component",
+  "quantity": 50,
+  "notes": "Urgent delivery required, willing to pay premium for fast shipping"
+}
+
+###
+
+### 4. Get Quote by ID - Retrieve a specific quote (replace {id} with actual ID)
+GET http://localhost:8080/api/quotes/1
+Accept: application/json
+
+###
+
+### 5. Get Quote by ID - Another example
+GET http://localhost:8080/api/quotes/2
+Accept: application/json
+
+###
+
+### Environment Variables (Optional)
+### You can define variables for different environments
+### @baseUrl = http://localhost:8080
+### @apiPath = /api/quotes
+
+### Example using variables:
+# GET {{baseUrl}}{{apiPath}}/health

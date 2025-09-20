@@ -6,6 +6,7 @@ import com.quote.service.QuoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/quotes")
@@ -15,7 +16,7 @@ public class QuoteController {
     private final QuoteService quoteService;
 
     @PostMapping
-    public ResponseEntity<QuoteResponseDTO> generateQuote(@RequestBody FormRequestDTO request) {
+    public ResponseEntity<QuoteResponseDTO> generateQuote(@Valid @RequestBody FormRequestDTO request) {
         QuoteResponseDTO response = quoteService.processQuote(request);
         return ResponseEntity.ok(response);
     }
@@ -24,5 +25,10 @@ public class QuoteController {
     public ResponseEntity<QuoteResponseDTO> getQuoteById(@PathVariable Long id) {
         QuoteResponseDTO response = quoteService.getQuoteById(id);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/health")
+    public ResponseEntity<String> healthCheck() {
+        return ResponseEntity.ok("Quote Negotiation API is running!");
     }
 }

@@ -1,5 +1,6 @@
 package com.quote.service;
 
+import com.quote.exception.ResourceNotFoundException;
 import com.quote.model.*;
 import com.quote.model.input.QuoteInput;
 import com.quote.repository.CustomerRepository;
@@ -20,10 +21,10 @@ public class RuleEngineImpl implements RuleEngine {
     @Override
     public Quote applyRules(QuoteInput input) {
         Customer customer = customerRepository.findById(input.getCustomerId())
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Customer with ID " + input.getCustomerId() + " not found"));
 
         Product product = productRepository.findById(input.getProductId())
-                .orElseThrow(() -> new RuntimeException("Product not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Product with ID " + input.getProductId() + " not found"));
 
         BigDecimal listPrice = product.getListPrice();
         Integer quantity = input.getQuantity();

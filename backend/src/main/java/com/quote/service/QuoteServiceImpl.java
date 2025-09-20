@@ -3,6 +3,7 @@ package com.quote.service;
 import com.quote.dto.FormRequestDTO;
 import com.quote.dto.LLMOverrideDTO;
 import com.quote.dto.QuoteResponseDTO;
+import com.quote.exception.ResourceNotFoundException;
 import com.quote.model.Quote;
 import com.quote.repository.QuoteRepository;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +34,7 @@ public class QuoteServiceImpl implements QuoteService{
 
     @Override
     public QuoteResponseDTO getQuoteById(Long id) {
-        Quote quote = quoteRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Quote not found"));
+        Quote quote = quoteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Quote with ID " + id + " not found"));
         return QuoteResponseDTO.from(quote);
     }
 }
