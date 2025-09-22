@@ -1,4 +1,4 @@
-package com.quote.service;
+package com.quote.adapter;
 
 import com.quote.model.input.QuoteInput;
 
