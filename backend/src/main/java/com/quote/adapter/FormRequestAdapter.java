@@ -1,14 +1,15 @@
-package com.quote.service;
+package com.quote.adapter;
 
 import com.quote.dto.FormRequestDTO;
 import com.quote.dto.LLMOverrideDTO;
 import com.quote.model.UrgencyLevel;
 import com.quote.model.input.FormQuoteInput;
 import com.quote.model.input.QuoteInput;
+import com.quote.service.QuoteInputSource;
 
 import java.math.BigDecimal;
 
-public class FormRequestAdapter implements QuoteInputSource{
+public class FormRequestAdapter implements QuoteInputSource {
     private final FormRequestDTO form;
     private final LLMOverrideDTO override;
 
