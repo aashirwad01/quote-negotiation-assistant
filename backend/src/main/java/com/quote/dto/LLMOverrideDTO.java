@@ -14,4 +14,6 @@ public class LLMOverrideDTO {
     private String priceMatchTo;
     private LocalDate deliveryDeadline;
     private String commentary; // Optional explanation from LLM
+    private ElasticityMetricsDTO elasticityMetrics;
+
 }
