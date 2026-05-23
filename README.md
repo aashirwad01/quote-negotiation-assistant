@@ -14,6 +14,12 @@ Simulate a realistic quote negotiation engine for supply chain B2B pricing by:
 - (Optional later) Supporting frontend inputs via CSV, API, or form
 
 ---
+<img width="1373" height="724" alt="image" src="https://github.com/user-attachments/assets/4a67331e-0210-425e-bd7a-af72cd5ccf3d" />
+
+<img width="1382" height="693" alt="image" src="https://github.com/user-attachments/assets/3de2fb43-e01e-41b4-98ed-b0a56c4b353e" />
+
+
+---
 
 ## ⚙️ Tech Stack
 
